@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "n8n",
     "dev": "env-cmd nodemon index.js",
     "repl": "env-cmd node"
   },
@@ -16,6 +17,7 @@
   "dependencies": {
     "@cyclic.sh/dynamodb": "^0.0.33",
     "env-cmd": "^10.1.0",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "n8n": "^0.222.1"
   }
 }
