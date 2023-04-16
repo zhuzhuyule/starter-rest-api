@@ -52,11 +52,12 @@ export default {
     chatGptBrowserClient: {
         // (Optional) Support for a reverse proxy for the conversation endpoint (private API server).
         // Warning: This will expose your access token to a third party. Consider the risks before using this.
-        reverseProxyUrl: 'https://bypass.churchless.tech/api/conversation',
+        // reverseProxyUrl: process.env.REVERSE ?? 'https://bypass.churchless.tech/api/conversation',
+        reverseProxyUrl: process.env.REVERSE || '',
         // Access token from https://chat.openai.com/api/auth/session
-        accessToken: '',
+        accessToken: process.env.TOKEN || '',
         // Cookies from chat.openai.com (likely not required if using reverse proxy server).
-        cookies: '',
+        cookies: process.env.COOKIES || '',
         // A proxy string like "http://<ip>:<port>"
         proxy: '',
         // (Optional) Set to true to enable `console.debug()` logging
@@ -69,7 +70,7 @@ export default {
         // (Optional) Set to true to enable `console.debug()` logging
         debug: false,
         // (Optional) Possible options: "chatgpt", "chatgpt-browser", "bing". (Default: "chatgpt")
-        clientToUse: 'chatgpt',
+        clientToUse: 'chatgpt-browser',
         // (Optional) Generate titles for each conversation for clients that support it (only ChatGPTClient for now).
         // This will be returned as a `title` property in the first response of the conversation.
         generateTitles: false,
