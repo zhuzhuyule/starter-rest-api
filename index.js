@@ -73,7 +73,8 @@ app.get('/notify/:col/:key', async (req, res) => {
   //   `
   // })
 
-  fetch(process.env.NOTIFY_URL, {
+  console.log(process.env.NOTIFY_URL, item.props.message);
+  await fetch(process.env.NOTIFY_URL, {
     method: 'POST',
     body: item.props.message
   })
