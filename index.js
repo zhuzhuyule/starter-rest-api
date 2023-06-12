@@ -73,14 +73,15 @@ app.get('/notify/:col/:key', async (req, res) => {
   //   `
   // })
 
-  console.log(process.env.NOTIFY_URL, item.props.message);
-  await fetch(process.env.NOTIFY_URL, {
-    method: 'POST',
-    body: item.props.message
-  })
+  console.log(req.headers)
+  if (req.headers['x-from'] === 'scheduled') {
+    await fetch(process.env.NOTIFY_URL, {
+      method: 'POST',
+      body: item.props.message
+    })
+  }
 
-
-  res.json(items).end()
+  res.json('Has deal').end()
 })
 
 // Catch all handler for all other request.
