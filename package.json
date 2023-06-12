@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "n8n",
     "dev": "env-cmd nodemon index.js",
     "repl": "env-cmd node"
   },
