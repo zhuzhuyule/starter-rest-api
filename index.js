@@ -60,6 +60,28 @@ app.get('/:col', async (req, res) => {
   res.json(items).end()
 })
 
+app.get('/notify/:col/:key', async (req, res) => {
+  const col = req.params.col
+  const key = req.params.key
+  const item = await db.collection(col).get(key)
+
+  // item.props.list.forEach((env, i) => {
+  //   message += `${i}. ${env.Name}
+  //   ${env.Start} -- ${env.End}
+  //   ${env.URL}
+  //   ${env.Password || ''}    
+  //   `
+  // })
+
+  fetch(process.env.NOTIFY_URL, {
+    method: 'POST',
+    body: item.props.message
+  })
+
+
+  res.json(items).end()
+})
+
 // Catch all handler for all other request.
 app.use('*', (req, res) => {
   res.json({ msg: 'no route handler found' }).end()
